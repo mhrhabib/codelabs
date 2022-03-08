@@ -61,6 +61,41 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        // ****** APP BAR ******************
+        shape:
+            CircularNotchedRectangle(), // ← carves notch for FAB in BottomAppBar
+        color: Theme.of(context).primaryColor.withAlpha(255),
+        // ↑ use .withAlpha(0) to debug/peek underneath ↑ BottomAppBar
+        elevation: 0, // ← removes slight shadow under FAB, hardly noticeable
+        // ↑ default elevation is 8. Peek it by setting color ↑ alpha to 0
+        child: BottomNavigationBar(
+          // ***** NAVBAR  *************************
+          elevation: 0, // 0 removes ugly rectangular NavBar shadow
+          // CRITICAL ↓ a solid color here destroys FAB notch. Use alpha 0!
+          backgroundColor: Theme.of(context).primaryColor.withAlpha(0),
+          // ====================== END OF INTERESTING STUFF =================
+          selectedItemColor: Theme.of(context).colorScheme.onSurface,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.ac_unit_outlined,
+                  size: 40, color: Theme.of(context).colorScheme.onBackground),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.access_alarm,
+                  size: 40, color: Theme.of(context).colorScheme.onBackground),
+              label: 'Edit',
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
